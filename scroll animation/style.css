@@ -1,0 +1,262 @@
+:root {
+    --bg: #0b0b0e;
+    --text: #ffffff;
+    --accent: #ff3366;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Typography & Layout */
+.vertical-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.intro-title {
+    font-size: clamp(4rem, 10vw, 12rem);
+    font-weight: 800;
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.highlight {
+    color: var(--accent);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.scroll-indicator .line {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, white, transparent);
+}
+
+/* Horizontal Scroll Styles */
+.horizontal-wrapper {
+    width: 100%;
+    height: 100vh;
+    /* Pinned container matches viewport height */
+    overflow: hidden;
+    /* Hide the overflow of the horizontal track */
+    position: relative;
+}
+
+.horizontal-container {
+    display: flex;
+    width: 300vw;
+    /* 3 panels = 300vw */
+    height: 100%;
+    flex-wrap: nowrap;
+}
+
+.panel {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.panel-image {
+    width: 70vw;
+    height: 80vh;
+    border-radius: 30px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Scaled up slightly to allow room for parallax effect inside */
+    transform: scale(1.2);
+    will-change: transform;
+}
+
+.panel-text {
+    position: relative;
+    z-index: 10;
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: white;
+    /* Blend mode makes the text transparently overlay the image below it */
+    mix-blend-mode: difference;
+}
+
+.nested-box {
+    position: absolute;
+    bottom: 15%;
+    /* Moved higher inside the image layer */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Centered perfectly */
+    z-index: 20;
+}
+
+.panel-subtext {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 10px 20px;
+    border-radius: 50px;
+    opacity: 0;
+    /* Animated in via JS */
+    transform: translateY(100px);
+}
+
+/* --- Epic Outro Reveal --- */
+.outro-wrapper {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: var(--bg);
+    /* Seamless transition from previous section */
+}
+
+.outro-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--text);
+    /* Inverted background */
+    color: var(--bg);
+    /* Inverted text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* The Magic Shape: Starts as a tiny circle in the center */
+    clip-path: circle(0% at 50% 50%);
+    will-change: clip-path;
+    overflow: hidden;
+    /* Keeps the floating orbs inside */
+}
+
+/* Scene 1 Elements */
+.outro-text-container {
+    text-align: center;
+    position: absolute;
+    /* So it can overlap with Scene 2 during the fade */
+    z-index: 20;
+}
+
+.outro-title {
+    font-size: clamp(4rem, 10vw, 10rem);
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+}
+
+.outro-subtitle {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+/* Scene 2 Elements */
+.core-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden; /* Prevent marquee overflow from breaking layout */
+}
+
+/* Kinetic Typography Background */
+.marquee-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg); /* Cool tilted perspective */
+    width: 200vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.marquee-line {
+    font-size: clamp(3rem, 7vw, 7rem);
+    font-weight: 800;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--text);
+    letter-spacing: 5px;
+}
+
+.center-focus {
+    position: relative;
+    z-index: 10;
+    overflow: hidden; /* Crucial for the slice reveal effect */
+}
+
+.core-text {
+    font-size: clamp(5rem, 15vw, 15rem);
+    font-weight: 800;
+    color: var(--accent); /* Red accent stands out fiercely */
+    text-transform: uppercase;
+    line-height: 1;
+    /* Start pushed down out of view, will slide up via GSAP */
+    transform: translateY(100%); 
+}
+
+.final-footer {
+    position: absolute;
+    bottom: 40px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    opacity: 0.5;
+    z-index: 20;
+}

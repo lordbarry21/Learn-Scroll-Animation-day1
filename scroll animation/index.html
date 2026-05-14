@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP Epic Scroll Journey</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+
+    <!-- GSAP Core & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Section 1: Intro -->
+    <section class="vertical-section intro">
+        <div class="intro-content">
+            <h1 class="intro-title">The Art of <br> <span class="highlight">Motion.</span></h1>
+            <div class="scroll-indicator">
+                <p>Scroll down to explore</p>
+                <div class="line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Horizontal Scroll (The Magic) -->
+    <div class="horizontal-wrapper">
+        <div class="horizontal-container">
+
+            <!-- Panel 1 -->
+            <section class="panel">
+                <div class="panel-image">
+                    <img src="roronoa-zoro.jpg" alt="Roronoa Zoro">
+                </div>
+                <h2 class="panel-text">01. Discovery</h2>
+            </section>
+
+            <!-- Panel 2 -->
+            <section class="panel">
+                <div class="panel-image">
+                    <img src="guts-berserk.jpg" alt="Guts Berserk">
+                    <!-- Moved inside panel-image so it acts as a layer inside the image -->
+                    <div class="nested-box">
+                        <p class="panel-subtext">Nested ScrollTrigger Activated!</p>
+                    </div>
+                </div>
+                <h2 class="panel-text">02. Evolution</h2>
+            </section>
+
+            <!-- Panel 3 -->
+            <section class="panel">
+                <div class="panel-image">
+                    <img src="tanjiro-kamado.jpg" alt="Tanjiro Kamado">
+                </div>
+                <h2 class="panel-text">03. Mastery</h2>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Section 3: Epic Outro & Core Combined -->
+    <section class="vertical-section outro-wrapper">
+        <!-- The expanding mask content -->
+        <div class="outro-content">
+
+            <!-- Scene 1: Beyond Limits -->
+            <div class="outro-text-container">
+                <h1 class="outro-title">Beyond Limits.</h1>
+                <p class="outro-subtitle">The journey never truly ends.</p>
+            </div>
+
+            <!-- Scene 2: Epic Typography -->
+            <div class="core-elements">
+                <div class="marquee-container">
+                    <div class="marquee-line m1">
+                        <span>LIMITLESS LIMITLESS LIMITLESS LIMITLESS LIMITLESS LIMITLESS LIMITLESS LIMITLESS</span>
+                    </div>
+                    <div class="marquee-line m2">
+                        <span>UNBREAKABLE UNBREAKABLE UNBREAKABLE UNBREAKABLE UNBREAKABLE UNBREAKABLE UNBREAKABLE</span>
+                    </div>
+                    <div class="marquee-line m3">
+                        <span>IMMORTAL IMMORTAL IMMORTAL IMMORTAL IMMORTAL IMMORTAL IMMORTAL IMMORTAL</span>
+                    </div>
+                </div>
+                <div class="center-focus">
+                    <h2 class="core-text">LEGACY.</h2>
+                </div>
+            </div>
+
+            <footer class="final-footer">
+                <p>Made By Barry</p>
+            </footer>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
